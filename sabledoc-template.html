@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- data-theme="dark"> -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Protobuf module documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.0/css/bulma.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="static/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Functions to open and close a modal
+            function openModal($el) {
+                $el.classList.add('is-active');
+            }
+
+            function closeModal($el) {
+                $el.classList.remove('is-active');
+            }
+
+            function closeAllModals() {
+                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                    closeModal($modal);
+                });
+            }
+
+            // Add a click event on buttons to open a specific modal
+            (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+                const modal = $trigger.dataset.target;
+                const $target = document.getElementById(modal);
+
+                $trigger.addEventListener('click', () => {
+                    openModal($target);
+                });
+            });
+
+            // Add a click event on various child elements to close the parent modal
+            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+                const $target = $close.closest('.modal');
+
+                $close.addEventListener('click', () => {
+                    closeModal($target);
+                });
+            });
+
+            // Add a keyboard event to close all modals
+            document.addEventListener('keydown', (event) => {
+                if (event.key === "Escape") {
+                    closeAllModals();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="fixed-grid has-12-cols">
+        <div class="grid">
+            <div class="cell is-col-span-11">
+
+                <!-- Service -->
+                <div class="content">
+
+                    <div class="title is-4"
+                         id="service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService">
+                        <a class="has-text-black"
+                           href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService"
+                           title="backend.diftech.platform.identitymanager.v1.IdentityManagerTestService"><abbr
+                                title="">IdentityManagerTestService</abbr></a>
+                    </div>
+
+                    <div class="block content srv">
+                        <p>Service for interacting with test users</p>
+                        <p> Service documentation
+                            <a class="has-text-link"
+                               href="https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176"
+                               title="https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176">https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176</a>
+                        </p>
+                    </div>
+
+                    <!-- Endpoint -->
+                    <div class="block">
+                        <div class="title is-5"
+                             id="service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService-GetIdentityHistoryData">
+                            <a class="has-text-black"
+                               href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService-GetIdentityHistoryData"><abbr
+                                    title="">GetIdentityHistoryData</abbr></a>
+                        </div>
+
+                        <div class="content">
+                            <p>This endpoint returns the history of changes for a specific <span
+                                    class="tag is-light">identity</span> for a certain <span
+                                    class="tag is-light">period</span></p>
+                            <p>Exceptions (doesn't returned)</p>
+                            <ul>
+                                <li>history of changes to the user's phone book</li>
+                                <li>history of changes to the user's addresses</li>
+                            </ul>
+                            <p>Endpoint documentation
+                                <a class="has-text-link"
+                                   href="https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176"
+                                   title="https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176">https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176</a>
+                            </p>
+                        </div>
+
+                        <!-- Buttons -->
+                        <button class="js-modal-trigger button" data-target="modal-js-example">
+                            <span>Open UML diagram</span>
+                        </button>
+
+                        <a class="button" href="https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176"
+                           target="_blank">Confluence</a>
+                        <a class="button" href="https://platacard.atlassian.net/wiki/spaces/PLAT/pages/440664176"
+                           target="_blank">Arch</a>
+
+
+                        <!-- UML Modal -->
+                        <div id="modal-js-example" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content is-fullwidth">
+                                <div class="box">
+                                    <div class="title is-7">
+                                        <a class="has-text-black"
+                                           href="https://gitlab.diftech.org/common/docs/platform-docs/-/blob/main/Solutions/User-flow/user-login.md">GetIdentityHistoryData</a>
+                                    </div>
+                                    <p class="image">
+                                        <img src="https://gitlab.diftech.org/-/plantuml/png/~1U9ojLjzlcp0GVkUlEBMlGUsahbihYjIawPIfFw8crHwcANBW25R0HjXapN-_CmOAXAwTj3manhxxxlpTTqSSLcWfYdIDkQEsN6GiPodCMQvvm3Ccz9o58HSRE3jjdO_bIxr_wh10onoU5UR051JqwpXh-GBtSiqJXEEByVZBpPcJlM92Qe_8tAuS526GZtMS9qn7Ca_TMsIwo571yVHs-caoxM0SNHSwTgD4_ZuoG7IFk7C-psLK1SdiyeqeImnYECO8BzPVkn5c8GhDzTwzPu9jC2y3yMgpskk2JcIQ5e87J7Cfu9Y55-T1s05za9f7jG71YTPp5-jHnqGfqRdZWU4WNEDfUDxDqDeiAfioFscsNf7eOqhY-fRfIv0PKk0iI-gWzk3L88Wns4B6b0faY0vBT5r3u55PNqfAmoqBS7O39x2KHH2Ngp6NAUgS1mv0DwZ5VCU5g438-IRMz70TQIEe906cDQQPjj828f--IR58JgzP0ZoK8WOPaOEr3p7Y0ec7FV37nScr27F9Gp8rv9XWXgKUEnQ-WMsbL0ey9e8_rm6S1iTfI3Gol0GZJV3CUhN5_OWoCVMPYKZwZcEsQqFBY_VYPgH6vb9Pt1tcYihY_ytEuhbI3LfHG_8TBb0Pd3kUSZsHXT13jhMO3KTU_R3YuOek6WyvH0dRmDtZjzd3wccwM3xD9ilf3LnTGSGIXGCEQoxAEN701aKPmKT2UlYISPe2AwPzY7APWgVitLPQRb4OIacZlKtW2goZgNWRTOC2SoeX2FnzuCMef5uYDxBGDReHIIUj8WkDkqV2PRHYgwnOKpVvWqRrPMtjAvFU3Bc4BOks3Bnwu4ntQEhLCnlmgw8qPMpNaC9jSbbazUIWCK6N2taKATF8ZO_5KCHI3nwawvVJv22_vz8bl26iAbMmSwTny2I5GLsnrqkad85xsznhOhgi197EHLMgmyXcryIsC-kVWjeXR6zV1kdCNDMeextRn6sFwoPgsxBlrybX80DC6Kz6e5Br3f1wAzy3FJQ2_lvZsJbGR4SAfDqHB9TtFcW90QEcWcfSUQvh3ScarmaZQ3V128A4yTHlIBK2i1EvUhk2QGNuUMiQjF_Y_3KihihpG_AgR5jE3TD3XrLZT7BpggUoDv365PJ9DlyZMkBhP_Q6_FvxKbJQFuCeMRG0"
+                                             alt="">
+                                    </p>
+                                </div>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Code snippet
+                    <div class="bd-snippet-source bd-theme-html">
+                        <p class="bd-snippet-title">
+                            <span class="bd-snippet-tag bd-is-html">HTML</span>
+                        </p>
+                        <div class="bd-snippet-code bd-highlight-full">
+                            <figure class="highlight">
+                                <pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"skeleton-block"</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre>
+                            </figure>
+                        </div>
+                    </div> -->
+
+
+
+
+                    <!-- Request -->
+                    <div class="block">
+                        <div class="title is-5"
+                             id="message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest">
+                            <a class="has-text-black"
+                               href="#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest"
+                               title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest"><abbr
+                                    title="">GetIdentityHistoryDataRequest</abbr></a>
+                        </div>
+
+                        <!-- table -->
+                        <table class="table is-bordered">
+                            <tbody>
+                            <tr>
+                                <td class="content has-text-weight-medium">identity_id
+                                    <span
+                                            class="tag is-danger is-light has-text-weight-normal is-rounded">Required</span>
+                                </td>
+                                <td>
+                                    <p title="common.diftech.types.std.v1.UUID">
+                                        <span class="tag is-light">common.diftech.types.std.v1.UUID</span>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>User ID</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">start_date</td>
+                                <td>
+                                    <p title="common.diftech.types.std.v1.DateTime">
+                                        <span class="tag is-white">optional</span>
+                                        <span class="tag is-light">common.diftech.types.std.v1.DateTime</span>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>Period start date</p>
+                                    <p>Default value: <span class="tag is-light">identity.created_at</span></p>
+                                    <p>Requires:</p>
+                                    <ul>
+                                        <li>Be sure to indicate the period</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">end_date</td>
+                                <td>
+                                    <p title="common.diftech.types.std.v1.DateTime">
+                                        <span class="tag is-white">optional</span>
+                                        <span class="tag is-light">common.diftech.types.std.v1.DateTime</span>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>Period end date</p>
+                                    <p>Default value: <span class="tag is-light">identity.NowDateTime()</span>
+                                    </p>
+                                    <p>Requires:</p>
+                                    <ul>
+                                        <li>Be sure to indicate the period</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">operation_type
+                                    <span
+                                            class="tag is-danger is-light has-text-weight-normal is-rounded">Required</span>
+                                </td>
+                                <td>
+                                    <p title="common.diftech.types.platform.v4.OperationType">
+                                        <span class="tag is-white">repeated</span>
+                                        <span
+                                                class="tag is-light">common.diftech.types.platform.v4.OperationType</span>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>Type of transaction</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">difference_type
+                                    <span
+                                            class="tag is-danger is-light has-text-weight-normal is-rounded">Required</span>
+                                </td>
+                                <td>
+                                    <p title="common.diftech.types.platform.v4.DifferenceType">
+                                        <span class="tag is-white">repeated</span>
+                                        <span
+                                                class="tag is-light">common.diftech.types.platform.v4.DifferenceType</span>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>Type of change</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">metainfo</td>
+                                <td>
+                                    <p
+                                            title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">
+                                        <span class="tag is-white">repeated</span>
+                                        <a
+                                                href="backend.diftech.platform.identitymanager.v1.html#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo"><span
+                                                class="tag is-link is-hoverable"
+                                                title="MetaInfo">MetaInfo</span></a>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>Additional Information</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">field_name</td>
+                                <td>
+                                    <p title="string">
+                                        <span class="tag is-white">repeated</span>
+                                        <span class="tag is-light">string</span>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>Additional Comment</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">metadata</td>
+                                <td>
+                                    <p
+                                            title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.Metadata">
+                                        <a
+                                                href="backend.diftech.platform.identitymanager.v1.html#enum-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.Metadata"><span
+                                                class="tag is-link is-hoverable"
+                                                title="Metadata">Metadata</span></a>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>Additional data</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content has-text-weight-medium">one_of_parameter
+                                    <span class="tag is-warning has-text-weight-normal is-rounded">oneOf</span>
+                                </td>
+                                <td>
+                                    <p class="content">
+                                    <ul>
+                                        <li>
+                                            <p
+                                                    title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">
+                                                <span class="tag is-white">repeated</span>
+                                                <a
+                                                        href="backend.diftech.platform.identitymanager.v1.html#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo"><span
+                                                        class="tag is-link is-hoverable"
+                                                        title="MetaInfo">MetaInfo</span></a>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p
+                                                    title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">
+                                                <span class="tag is-white">repeated</span>
+                                                <a
+                                                        href="backend.diftech.platform.identitymanager.v1.html#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo"><span
+                                                        class="tag is-link is-hoverable"
+                                                        title="MetaInfo">MetaInfo</span></a>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>OneOf messages</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <!-- Response -->
+                    <div class="block">
+                        <div class="title is-5"
+                             id="message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataResponse">
+                                <span>
+                                    <a class="has-text-black"
+                                       href="#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataResponse"
+                                       title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataResponse"><abbr
+                                            title="">GetIdentityHistoryDataResponse</abbr></a>
+                                </span>
+                        </div>
+
+                        <!-- table -->
+                        <table class="table is-bordered">
+                            <tbody>
+                            <tr>
+                                <td class="content has-text-weight-medium">identity_id
+                                    <span
+                                            class="tag is-danger is-light has-text-weight-normal is-rounded">Required</span>
+                                </td>
+                                <td>
+                                    <p title="common.diftech.types.std.v1.UUID">
+                                        <span class="tag is-light">common.diftech.types.std.v1.UUID</span>
+                                    </p>
+                                </td>
+                                <td class="content">
+                                    <p>User ID</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <!-- Nested messages -->
+                    <div class="block">
+                        <div class="title is-5">Nested messages</div>
+
+                        <!-- Message -->
+                        <div class="block">
+                            <div class="title is-6"
+                                 id="message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">
+                                    <span>
+                                        <a class="has-text-black"
+                                           href="#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo"
+                                           title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">MetaInfo</a>
+                                    </span>
+                                <span class="tag is-link is-hoverable has-text-weight-normal">
+                                        <a class="has-text-white"
+                                           href="#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo"
+                                           title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">GetIdentityHistoryDataRequest</a>
+                                    </span>
+                            </div>
+
+                            <div class="content">
+                                <p>Additional user Metadata</p>
+                            </div>
+
+                            <!-- table -->
+                            <table class="table is-bordered">
+                                <tbody>
+                                <tr>
+                                    <td class="content has-text-weight-medium">identity_id</td>
+                                    <td>
+                                        <p title="common.diftech.types.std.v1.UUID">
+                                            <span class="tag is-light">common.diftech.types.std.v1.UUID</span>
+                                        </p>
+                                    </td>
+                                    <td class="content">
+                                        <p>User ID</p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <!-- Nested enums -->
+                    <div class="block">
+                        <div class="title is-5">Enums</div>
+
+                        <!-- Enum -->
+                        <div class="block">
+                            <div class="title is-6"
+                                 id="message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">
+                                    <span>
+                                        <a class="has-text-black"
+                                           href="#message-backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo"
+                                           title="backend.diftech.platform.identitymanager.v1.GetIdentityHistoryDataRequest.MetaInfo">MetaInfo</a>
+                                    </span>
+                            </div>
+
+                            <div class="content">
+                                <p>Additional user Metadata</p>
+                            </div>
+
+                            <!-- table -->
+                            <table class="table is-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Number</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><span
+                                            class="tag is-light has-text-weight-medium">METADATA_UNSPECIFIED</span>
+                                    </td>
+                                    <td>0</td>
+                                    <td class="content">
+                                        <p>Wrong metadata</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span
+                                            class="tag is-light has-text-weight-medium">METADATA_SPECIFIED</span>
+                                    </td>
+                                    <td>1</td>
+                                    <td class="content">
+                                        <p>Not Wrong metadata</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span
+                                            class="tag is-light has-text-weight-medium">METADATA_EASY_PEASY_SPECIFIED</span>
+                                    </td>
+                                    <td>2</td>
+                                    <td class="content">
+                                        <p>Right metadata</p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!-- Menu -->
+            <aside class="menu is-small">
+                <p class="menu-label">Service</p>
+                <ul class="menu-list">
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService">IdentityManagerTestService</a>
+                    </li>
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService">IdentityManagerAddressService</a>
+                    </li>
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService">IdentityManagerService</a>
+                    </li>
+                </ul>
+                <p class="menu-label">Endpoints</p>
+                <ul class="menu-list">
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService-GetIdentityHistoryData">GetIdentityHistoryData</a>
+                    </li>
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService-GetIdentityHistoryData">Endpoint
+                        2</a></li>
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService-GetIdentityHistoryData">Endpoint
+                        3</a></li>
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService-GetIdentityHistoryData">Endpoint
+                        4</a></li>
+                    <li><a
+                            href="#service-backend.diftech.platform.identitymanager.v1.IdentityManagerTestService-GetIdentityHistoryData">Endpoint
+                        5</a></li>
+                </ul>
+                <p class="menu-label">Enums</p>
+                <ul class="menu-list">
+                    <li><a href="#enum-Metadata">Enum 1</a></li>
+                    <li><a href="#enum-Metadata">Enum 2</a></li>
+                    <li><a href="#enum-Metadata">Enum 3</a></li>
+                </ul>
+            </aside>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
